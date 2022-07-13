@@ -43,7 +43,7 @@ struct ContentView: View {
                     .padding()
                     .font(.custom(selectedFont, size: CGFloat(fontSize)))
                     .onChange(of: inputText) { newValue in
-                        userDefaults.set(inputText, forKey: KeyValue.inputText.rawValue)
+                        userDefaults.set(newValue, forKey: KeyValue.inputText.rawValue)
                     }
                 
                 Button(action: {
@@ -63,13 +63,13 @@ struct ContentView: View {
         .sheet(isPresented: $showState) {
             SettingsView(selectedFont: $selectedFont, fontSize: $fontSize, darkMode: $darkMode)
                 .onChange(of: selectedFont) { newValue in
-                    userDefaults.set(selectedFont, forKey: KeyValue.selectedFont.rawValue)
+                    userDefaults.set(newValue, forKey: KeyValue.selectedFont.rawValue)
                 }
                 .onChange(of: fontSize) { newValue in
-                    userDefaults.set(fontSize, forKey: KeyValue.fontSize.rawValue)
+                    userDefaults.set(newValue, forKey: KeyValue.fontSize.rawValue)
                 }
                 .onChange(of: darkMode) { newValue in
-                    userDefaults.set(darkMode, forKey: KeyValue.darkMode.rawValue)
+                    userDefaults.set(newValue, forKey: KeyValue.darkMode.rawValue)
                 }
         }
         
